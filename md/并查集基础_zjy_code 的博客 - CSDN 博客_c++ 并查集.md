@@ -1,12 +1,12 @@
-> 本文由 [简悦 SimpRead](http://ksria.com/simpread/) 转码， 原文地址 [blog.csdn.net](https://blog.csdn.net/zjy_code/article/details/80634149)
-
 > 并查集 是一种树型的数据结构, 用于处理一些不相加集合的合并和查询问题。
+
+# 并查集
 
 **并查集** 是一种树型的数据结构, 用于处理一些不相加集合的合并和查询问题。在使用中常常以森林来表示。 并查集也是用来维护集合的, 和前面学习的 set 不同之处在于, 并查集能很方便地同时维护很多集合。如果用 set 来维护会非常的麻烦。并查集的核心思想是记录每个结点的父亲结点是哪个结点。
 
 1) 初始化: 初始的时候每个结点各自为一个集合, father[i] 表示结点 i 的父亲结点, 如果 father[i]=i, 我们认为这个结点是当前集合根结点。
 
-```
+```cpp
 void init() {
     for (int i = 1; i <= n; ++i) {
         father[i] = i;
@@ -16,7 +16,7 @@ void init() {
 
 2) 查找: 查找结点所在集合的根结点, 结点 x 的根结点必然也是其父亲结点的根结点。
 
-```
+```cpp
 int get(int x) {
     if (father[x] == x) { // x 结点就是根结点
         return x; 
@@ -27,7 +27,7 @@ int get(int x) {
 
 3) 合并: 将两个元素所在的集合合并在一起, 通常来说, 合并之前先判断两个元素是否属于同一集合。
 
-```
+```cpp
 void merge(int x, int y) {
     x = get(x);
     y = get(y);
@@ -43,7 +43,7 @@ void merge(int x, int y) {
 
 这样我们在一次查询的时候，可以把查询路径上的所有结点的 father[i] 都赋值成为根结点。只需要在我们之前的查询函数上面进行很小的改动
 
-```
+```cpp
 int get(int x) {
     if (father[x] == x) { // x 结点就是根结点
         return x; 
@@ -72,7 +72,7 @@ int get(int x) {
 
 1) 初始化：
 
-```
+```cpp
 void init() {
     for(int i = 1; i <= n; i++)  {
         father[i] = i, dist[i] = 0, size[i] = 1;
@@ -82,7 +82,7 @@ void init() {
 
 2) 查找：查找元素所在的集合，即根节点。
 
-```
+```cpp
 int get(int x) {
     if(father[x] == x) {
         return x;        
@@ -101,7 +101,7 @@ int get(int x) {
 
 通常来说，合并之前，应先判断两个元素是否属于同一个集合，这可用上面的 “查找” 操作实现。
 
-```
+```cpp
 void merge(int a, int b) {
     a = get(a);
     b = get(b);

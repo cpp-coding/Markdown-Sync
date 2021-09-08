@@ -1,5 +1,3 @@
-> 本文由 [简悦 SimpRead](http://ksria.com/simpread/) 转码， 原文地址 [blog.csdn.net](https://blog.csdn.net/whilt_hand/article/details/114361339)
-
 > 并查集（分析 + 板子）所谓并查集，顾名思义，就是对于集合上的操作，包括合并集合和查找集合。
 
 并查集（分析 + 板子）
@@ -11,7 +9,7 @@
 
 1、查找操作
 
-```
+```cpp
 int find_pa(int x)
 {
    if(parent[x]==x) return x;//父节点为本身，直接返回。
@@ -21,7 +19,7 @@ int find_pa(int x)
 
 合并操作
 
-```
+```cpp
 void union_(int x , int y )
 {
      int x_root=find_pa(x);
@@ -47,7 +45,7 @@ void union_(int x , int y )
 这时我们就要用到我们的一个小小优化，用一个 dist 数组，存储根结点的最大深度（从下往上的深度）当需要合并时，先进行判断，谁的根深度小，我们自然是希望深度小的连接到深度大的根下面  
 ![](https://img-blog.csdnimg.cn/20210305155953153.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3doaWx0X2hhbmQ=,size_16,color_FFFFFF,t_70#pic_center)
 
-```
+```cpp
 void union_(int x,int y)
 {
   int x_root=find_pa(x);
@@ -102,7 +100,7 @@ No
 样例给出的关系如图所示，1，2，3，4，5 是一个集合，有亲戚关系，而 6 与任何人都没有亲戚关系。当合并完后，find_pa(1)=find_pa(2)=find_pa(x=3)=find_pa(x4)=find_pa(5); 具体等于多少不重要，与输入样例顺序有关，只要能确定在一个集合就行。  
 find_pa(6)=6；
 
-```
+```cpp
 #include <bits/stdc++.h>
 using namespace std;
 const int Max=2e5+20;

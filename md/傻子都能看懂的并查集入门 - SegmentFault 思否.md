@@ -1,5 +1,3 @@
-> 本文由 [简悦 SimpRead](http://ksria.com/simpread/) 转码， 原文地址 [segmentfault.com](https://segmentfault.com/a/1190000004023326)
-
 > 用集合中的某个元素来代表这个集合，该元素称为集合的代表元。
 
 其实并查集顾名思义就是有 “合并集合” 和“查找集合中的元素”两种操作的关于数据结构的一种算法。
@@ -78,7 +76,7 @@ struct Node
 
 有的人则是弄很多相同大小的数组，如：
 
-```
+```cpp
 int set[max];//集合index的类别，或者用parent表示
 int rank[max];//集合index的层次，通常初始化为0
 int data[max];//集合index的数据类型
@@ -102,7 +100,7 @@ void Make_Set(int i)
 如果集合的 parent 等于集合的编号（即还没有被合并或者没有同类），那么自然返回自身编号。  
 如果不同（即经过合并操作后指针指向了源头（合并后选出的 rank 高的集合））那么就可以调用递归函数，如下面的代码：
 
-```
+```cpp
 /**
 *查找集合i（一个元素是一个集合）的源头（递归实现）。
  如果集合i的父亲是自己，说明自己就是源头，返回自己的标号；
@@ -118,7 +116,7 @@ int get_parent(int x)
 
 数组的话就是：
 
-```
+```cpp
 //查找集合i（一个元素是一个集合）的源头（递归实现）
 int Find_Set(int i)
 { 
@@ -130,7 +128,7 @@ int Find_Set(int i)
 }
 ```
 
-```
+```cpp
 int unifind(int a){// find the root and compress the path
     
     int root = a;
@@ -159,7 +157,7 @@ int unifind(int a){// find the root and compress the path
 这就是所谓并查集的并了。至于怎么知道两个集合是可以合并的，那就是题目的条件了。  
 先看代码：
 
-```
+```cpp
 void Union(int a,int b)
 {
     a=get_parent(a);
@@ -177,7 +175,7 @@ void Union(int a,int b)
 
 再给出数组显示的合并函数：
 
-```
+```cpp
 void Union(int i,int j)
 {
     i=Find_Set(i);
@@ -198,7 +196,7 @@ void Union(int i,int j)
 就算需要多少条边可以成为连通图
 ---------------
 
-```
+```cpp
 int count = 0; // the number of independent sets
 
 即计算有多少个 parent[i] == i;
@@ -214,7 +212,7 @@ int count = 0; // the number of independent sets
 
 AC 代码：
 
-```
+```cpp
 /*
  * Copyright (c) Huawei Technologies Co., Ltd. 2012-2018. All rights reserved.
  * Description: 项目 City Road 的源文件
